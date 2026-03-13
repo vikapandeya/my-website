@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,76 +7,150 @@
 <title>Good Vibes</title>
 
 <style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    font-family: 'Segoe UI', sans-serif;
 
-    /* Royal Gradient Background */
-    background: linear-gradient(135deg,#1a0033,#4b0082,#800080,#b8860b);
-    background-size:400% 400%;
-    animation: royalBG 12s ease infinite;
-    color:white;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+overflow:hidden;
+color:white;
+
+/* Royal animated background */
+background: linear-gradient(-45deg,#0f0524,#3b0066,#6a00a8,#ff008c);
+background-size:400% 400%;
+animation: gradientMove 12s ease infinite;
 }
 
 /* Background animation */
-@keyframes royalBG{
+
+@keyframes gradientMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-/* Main vibe box */
-.vibe-box{
-    text-align:center;
-    padding:40px 60px;
-    border-radius:15px;
-    background:rgba(0,0,0,0.35);
-    backdrop-filter: blur(8px);
-    box-shadow:0 0 25px rgba(255,215,0,0.7);
+/* Floating stars */
+
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:0.4;
+animation: stars 60s linear infinite;
+}
+
+@keyframes stars{
+from{transform:translateY(0);}
+to{transform:translateY(-1000px);}
+}
+
+/* Main card */
+
+.card{
+position:relative;
+text-align:center;
+padding:50px 70px;
+border-radius:20px;
+background:rgba(0,0,0,0.35);
+backdrop-filter: blur(12px);
+box-shadow:0 0 40px rgba(255,0,150,0.7);
+transition:0.4s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 70px rgba(255,0,150,1);
 }
 
 /* Heading */
-h1{
-    font-size:48px;
-    letter-spacing:3px;
-    color:#FFD700;
-    text-shadow:0 0 15px #FFD700;
-    animation: glow 2s infinite alternate;
-}
 
-/* Text */
-p{
-    font-size:20px;
-    margin-top:10px;
+h1{
+font-size:48px;
+letter-spacing:4px;
+color:#ffd6ff;
+text-shadow:0 0 20px #ff4df0;
+animation: glow 2s infinite alternate;
 }
 
 /* Glow animation */
+
 @keyframes glow{
-from{ text-shadow:0 0 10px #FFD700;}
-to{ text-shadow:0 0 30px #FFD700;}
+from{text-shadow:0 0 10px #ff4df0;}
+to{text-shadow:0 0 35px #ff4df0;}
+}
+
+/* Message */
+
+.message{
+margin-top:15px;
+font-size:20px;
+opacity:0.9;
+}
+
+/* Romantic line */
+
+.love{
+margin-top:20px;
+font-size:22px;
+color:#ffb3f7;
+}
+
+/* Heart animation */
+
+.heart{
+font-size:40px;
+margin-top:20px;
+animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+25%{transform:scale(1.2);}
+40%{transform:scale(1);}
+60%{transform:scale(1.2);}
+100%{transform:scale(1);}
 }
 
 /* Footer */
+
 footer{
-    position:fixed;
-    bottom:10px;
-    font-size:14px;
-    opacity:0.8;
+position:fixed;
+bottom:10px;
+font-size:14px;
+opacity:0.8;
+letter-spacing:1px;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="vibe-box">
+<div class="card">
+
 <h1>GOOD VIBES ONLY ✨</h1>
-<p>Positive Energy • Royal Feel • Peaceful Mind</p>
-<p>Stay Positive & Keep Smiling 😊</p>
+
+<p class="message">
+Positive Energy • Royal Feel • Beautiful Moments
+</p>
+
+<p class="love">
+Every smile of yours makes my day brighter ✨
+</p>
+
+<div class="heart">💖</div>
+
 </div>
 
 <footer>
@@ -84,3 +159,4 @@ footer{
 
 </body>
 </html>
+```
