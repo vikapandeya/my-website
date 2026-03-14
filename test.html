@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Good Vibes Only</title>
+<title>Love Universe</title>
 
 <style>
 
@@ -19,202 +20,154 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
+flex-direction:column;
 color:white;
+overflow:hidden;
 
-/* animated gradient background */
 background:linear-gradient(-45deg,#0f0524,#3b0066,#6a00a8,#ff008c);
 background-size:400% 400%;
-animation:bgMove 12s ease infinite;
+animation:bgmove 15s infinite ease;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+@keyframes bgmove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-/* floating sparkles */
+/* falling petals */
 
-.sparkles{
+.petal{
 position:absolute;
-width:200%;
-height:200%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:0.35;
-animation:stars 60s linear infinite;
+top:-20px;
+font-size:18px;
+animation:fall linear infinite;
+opacity:.8;
 }
 
-@keyframes stars{
-from{transform:translateY(0);}
-to{transform:translateY(-1000px);}
+@keyframes fall{
+0%{transform:translateY(-20px) rotate(0deg)}
+100%{transform:translateY(110vh) rotate(360deg)}
 }
 
-/* glass card */
+/* floating hearts */
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:20px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-110vh)}
+}
+
+/* main card */
 
 .card{
-position:relative;
 text-align:center;
 padding:40px 60px;
 border-radius:20px;
 background:rgba(0,0,0,0.35);
 backdrop-filter:blur(12px);
-box-shadow:0 0 40px rgba(255,0,150,0.7);
-max-width:90%;
+box-shadow:0 0 40px rgba(255,0,150,.6);
+z-index:5;
+max-width:600px;
+width:90%;
 }
-
-.card:hover{
-transform:scale(1.05);
-}
-
-/* heading */
 
 h1{
-font-size:clamp(28px,5vw,48px);
+font-size:42px;
 letter-spacing:3px;
 color:#ffd6ff;
-text-shadow:0 0 20px #ff4df0;
-animation:glow 2s infinite alternate;
+text-shadow:0 0 25px #ff4df0;
 }
 
-@keyframes glow{
-from{text-shadow:0 0 10px #ff4df0;}
-to{text-shadow:0 0 35px #ff4df0;}
-}
-
-/* phrase */
-
-.phrase{
-margin-top:10px;
-font-size:18px;
-opacity:0.9;
-}
-
-/* love lines */
-
-.love{
-margin-top:18px;
+.typewriter{
+margin-top:15px;
 font-size:20px;
-color:#ffb3f7;
-line-height:1.5;
+border-right:3px solid white;
+white-space:nowrap;
+overflow:hidden;
+display:inline-block;
 }
 
-/* main heart */
+/* button */
 
-.big-heart{
-font-size:50px;
-margin-top:20px;
-cursor:pointer;
-animation:heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat{
-0%{transform:scale(1);}
-25%{transform:scale(1.2);}
-40%{transform:scale(1);}
-60%{transform:scale(1.2);}
-100%{transform:scale(1);}
-}
-
-/* toggle button */
-
-.toggle-btn{
-margin-top:20px;
-padding:12px 28px;
+.btn{
+margin-top:25px;
+padding:14px 30px;
+font-size:18px;
 border:none;
-border-radius:30px;
-font-size:16px;
-font-weight:600;
-color:white;
+border-radius:40px;
 cursor:pointer;
-
-background:linear-gradient(45deg,#ff008c,#ff4df0,#ff7bd5);
-background-size:200% 200%;
-
-box-shadow:0 0 15px rgba(255,0,150,0.6);
-transition:0.3s;
-animation:btnGlow 4s linear infinite;
+background:linear-gradient(45deg,#ff008c,#ff4df0);
+color:white;
+box-shadow:0 0 20px #ff4df0;
+transition:.3s;
 }
 
-.toggle-btn:hover{
-transform:scale(1.08);
-box-shadow:0 0 25px rgba(255,0,150,1);
+.btn:hover{
+transform:scale(1.1);
 }
 
-@keyframes btnGlow{
-0%{background-position:0%}
-50%{background-position:100%}
-100%{background-position:0%}
+/* love letter */
+
+.letter{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+width:90%;
+max-width:500px;
+background:#fff;
+color:#333;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 40px #ff008c;
+transition:.5s;
+z-index:10;
 }
 
-/* hanging hearts */
+.letter.active{
+transform:translate(-50%,-50%) scale(1);
+}
 
-.hearts-top{
+.letter h2{
+margin-bottom:10px;
+color:#ff008c;
+}
+
+.close{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+background:#ff008c;
+color:white;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* heart explosion */
+
+.explode{
 position:absolute;
-top:0;
-width:100%;
-height:120px;
-pointer-events:none;
+font-size:20px;
+animation:boom 1s forwards;
 }
 
-.hanger{
-position:absolute;
-top:0;
-animation:swing 4s ease-in-out infinite;
-}
-
-.hanger span{
-display:block;
-margin-top:80px;
-font-size:24px;
-}
-
-@keyframes swing{
-0%{transform:rotate(-7deg);}
-50%{transform:rotate(7deg);}
-100%{transform:rotate(-7deg);}
-}
-
-/* floating hearts */
-
-.floating{
-position:absolute;
-bottom:0;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-.float-heart{
-position:absolute;
-bottom:0;
-font-size:18px;
-animation:rise 10s linear infinite;
-}
-
-@keyframes rise{
-0%{transform:translateY(0);opacity:0;}
-10%{opacity:1;}
-100%{transform:translateY(-120vh);opacity:0;}
-}
-
-/* burst hearts */
-
-.burst{
-position:absolute;
-font-size:18px;
-animation:burstUp 1.6s forwards;
-}
-
-@keyframes burstUp{
-0%{opacity:1;transform:translateY(0) scale(1);}
-100%{opacity:0;transform:translateY(-200px) scale(1.6);}
+@keyframes boom{
+0%{transform:scale(1);opacity:1}
+100%{transform:scale(3) translateY(-100px);opacity:0}
 }
 
 footer{
-margin-top:15px;
-font-size:13px;
-opacity:0.8;
+position:fixed;
+bottom:10px;
+font-size:14px;
+opacity:.8;
 }
 
 </style>
@@ -222,117 +175,136 @@ opacity:0.8;
 
 <body>
 
-<div class="sparkles"></div>
-
-<!-- hanging hearts -->
-<div class="hearts-top">
-<div class="hanger" style="left:10%"><span>💖</span></div>
-<div class="hanger" style="left:30%"><span>💗</span></div>
-<div class="hanger" style="left:50%"><span>💞</span></div>
-<div class="hanger" style="left:70%"><span>💘</span></div>
-<div class="hanger" style="left:90%"><span>💓</span></div>
-</div>
-
-<!-- floating hearts -->
-<div class="floating">
-<div class="float-heart" style="left:15%">💖</div>
-<div class="float-heart" style="left:40%">💗</div>
-<div class="float-heart" style="left:65%">💞</div>
-<div class="float-heart" style="left:80%">💘</div>
-</div>
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b7f5d.mp3" type="audio/mpeg">
+</audio>
 
 <div class="card">
 
 <h1>GOOD VIBES ONLY ✨</h1>
 
-<div class="phrase" id="phrase">
-Positive Energy • Royal Feel • Beautiful Moments
+<div class="typewriter" id="text"></div>
+
+<br>
+
+<button class="btn" onclick="openLetter()">
+Enter Love ❤️
+</button>
+
 </div>
 
-<p class="love">
-Every smile of yours makes my day brighter Khushi ✨ <br>
-Your happiness is my favorite feeling 💞
+<div class="letter" id="letter">
+
+<h2>My Love Letter 💌</h2>
+
+<p>
+
+Every moment with you feels magical.<br><br>
+
+Your smile brightens my darkest days.<br><br>
+
+If love had a name, it would be yours.<br><br>
+
+You are not just someone special…<br>
+you are my happiness, my peace, my world.<br><br>
+
+Forever yours ❤️
+
 </p>
 
-<div class="big-heart">💖</div>
+<button class="close" onclick="closeLetter()">Close</button>
 
-<button id="toggleHearts" class="toggle-btn">
-💖 Turn Hearts OFF
-</button>
+</div>
 
 <footer>
 © Pandey Ji
 </footer>
 
-</div>
-
 <script>
 
-/* rotating phrases */
+/* typewriter */
 
-const phrases=[
-"Positive Energy • Royal Feel • Beautiful Moments",
-"Every smile of yours makes my day brighter Khushi ✨",
-"You are my sunshine and my happiness 💞",
-"With you every moment feels magical ✨"
-]
+const message="Every smile of yours makes my day brighter Khushi ✨";
+let i=0;
 
-let index=0
-const phraseEl=document.getElementById("phrase")
-
-setInterval(()=>{
-index=(index+1)%phrases.length
-phraseEl.innerText=phrases[index]
-},3500)
-
-/* toggle hearts */
-
-const toggleBtn=document.getElementById("toggleHearts")
-const floating=document.querySelector(".floating")
-const hanging=document.querySelector(".hearts-top")
-
-let heartsOn=true
-
-toggleBtn.addEventListener("click",()=>{
-
-heartsOn=!heartsOn
-
-if(heartsOn){
-floating.style.display="block"
-hanging.style.display="block"
-toggleBtn.innerHTML="💖 Turn Hearts OFF"
-}else{
-floating.style.display="none"
-hanging.style.display="none"
-toggleBtn.innerHTML="🖤 Turn Hearts ON"
+function type(){
+if(i<message.length){
+document.getElementById("text").innerHTML+=message.charAt(i);
+i++;
+setTimeout(type,60);
+}
 }
 
-})
+type();
 
-/* click heart explosion */
+/* falling petals */
 
-const bigHeart=document.querySelector(".big-heart")
+for(let i=0;i<25;i++){
 
-bigHeart.addEventListener("click",()=>{
+let p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌹";
 
-for(let i=0;i<8;i++){
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=(5+Math.random()*5)+"s";
 
-const heart=document.createElement("div")
-heart.innerHTML="💖"
-heart.className="burst"
-
-heart.style.left=Math.random()*100+"%"
-heart.style.top="60%"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>heart.remove(),1600)
+document.body.appendChild(p);
 
 }
 
-})
+/* floating hearts */
+
+for(let i=0;i<20;i++){
+
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(8+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+}
+
+/* open love letter */
+
+function openLetter(){
+
+document.getElementById("letter").classList.add("active");
+document.getElementById("music").play();
+
+}
+
+/* close */
+
+function closeLetter(){
+
+document.getElementById("letter").classList.remove("active");
+
+}
+
+/* heart explosion */
+
+document.body.addEventListener("click",function(e){
+
+let heart=document.createElement("div");
+heart.className="explode";
+heart.innerHTML="💖";
+
+heart.style.left=e.pageX+"px";
+heart.style.top=e.pageY+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},1000)
+
+});
 
 </script>
 
 </body>
 </html>
+```
