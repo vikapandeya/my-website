@@ -1,10 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Universe</title>
+<title>Royal Love Universe</title>
 
 <style>
 
@@ -21,32 +20,31 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-color:white;
 overflow:hidden;
+color:white;
 
-background:linear-gradient(-45deg,#0f0524,#3b0066,#6a00a8,#ff008c);
+background:linear-gradient(-45deg,#14002e,#3b0066,#6a00a8,#ff008c);
 background-size:400% 400%;
-animation:bgmove 15s infinite ease;
+animation:bg 14s infinite ease;
 }
 
-@keyframes bgmove{
+@keyframes bg{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
 
-/* falling petals */
+/* petals */
 
 .petal{
 position:absolute;
 top:-20px;
 font-size:18px;
 animation:fall linear infinite;
-opacity:.8;
 }
 
 @keyframes fall{
-0%{transform:translateY(-20px) rotate(0deg)}
+0%{transform:translateY(-20px) rotate(0)}
 100%{transform:translateY(110vh) rotate(360deg)}
 }
 
@@ -72,20 +70,22 @@ padding:40px 60px;
 border-radius:20px;
 background:rgba(0,0,0,0.35);
 backdrop-filter:blur(12px);
-box-shadow:0 0 40px rgba(255,0,150,.6);
-z-index:5;
+box-shadow:0 0 60px rgba(255,0,150,.7);
 max-width:600px;
 width:90%;
+z-index:5;
 }
 
 h1{
-font-size:42px;
+font-size:44px;
 letter-spacing:3px;
 color:#ffd6ff;
 text-shadow:0 0 25px #ff4df0;
 }
 
-.typewriter{
+/* typewriter */
+
+.type{
 margin-top:15px;
 font-size:20px;
 border-right:3px solid white;
@@ -98,14 +98,14 @@ display:inline-block;
 
 .btn{
 margin-top:25px;
-padding:14px 30px;
+padding:15px 32px;
 font-size:18px;
 border:none;
 border-radius:40px;
 cursor:pointer;
 background:linear-gradient(45deg,#ff008c,#ff4df0);
 color:white;
-box-shadow:0 0 20px #ff4df0;
+box-shadow:0 0 25px #ff4df0;
 transition:.3s;
 }
 
@@ -113,7 +113,7 @@ transition:.3s;
 transform:scale(1.1);
 }
 
-/* love letter */
+/* ROYAL LETTER */
 
 .letter{
 position:fixed;
@@ -121,12 +121,16 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
 width:90%;
-max-width:500px;
-background:#fff;
+max-width:550px;
+
+background:linear-gradient(135deg,#fff,#ffe6f6);
 color:#333;
-padding:30px;
-border-radius:15px;
-box-shadow:0 0 40px #ff008c;
+
+padding:35px;
+border-radius:25px;
+
+box-shadow:0 0 60px rgba(255,0,150,.6);
+
 transition:.5s;
 z-index:10;
 }
@@ -136,31 +140,73 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 .letter h2{
-margin-bottom:10px;
+font-size:30px;
 color:#ff008c;
+margin-bottom:15px;
+}
+
+.letter p{
+font-size:18px;
+line-height:1.7;
 }
 
 .close{
-margin-top:15px;
-padding:10px 20px;
+margin-top:20px;
+padding:10px 22px;
 border:none;
+border-radius:30px;
 background:#ff008c;
 color:white;
-border-radius:30px;
 cursor:pointer;
 }
 
 /* heart explosion */
 
-.explode{
+.boom{
 position:absolute;
 font-size:20px;
-animation:boom 1s forwards;
+animation:explode 1s forwards;
 }
 
-@keyframes boom{
+@keyframes explode{
 0%{transform:scale(1);opacity:1}
-100%{transform:scale(3) translateY(-100px);opacity:0}
+100%{transform:scale(3) translateY(-120px);opacity:0}
+}
+
+/* cupid */
+
+.cupid{
+position:absolute;
+top:80px;
+left:-120px;
+font-size:50px;
+animation:cupidFly 8s linear infinite;
+}
+
+@keyframes cupidFly{
+0%{left:-120px}
+100%{left:110%}
+}
+
+/* arrow */
+
+.arrow{
+position:absolute;
+font-size:24px;
+animation:arrowFly 3s linear infinite;
+}
+
+@keyframes arrowFly{
+0%{
+left:0;
+top:120px;
+opacity:1;
+}
+100%{
+left:100%;
+top:200px;
+opacity:0;
+}
 }
 
 footer{
@@ -176,39 +222,47 @@ opacity:.8;
 <body>
 
 <audio id="music" loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b7f5d.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b7f5d.mp3">
 </audio>
+
+<div class="cupid">👼💘</div>
+<div class="arrow">🏹</div>
 
 <div class="card">
 
-<h1>GOOD VIBES ONLY ✨</h1>
+<h1>Royal Love ✨</h1>
 
-<div class="typewriter" id="text"></div>
+<div class="type" id="type"></div>
 
 <br>
 
 <button class="btn" onclick="openLetter()">
-Enter Love ❤️
+Open My Heart ❤️
 </button>
 
 </div>
 
 <div class="letter" id="letter">
 
-<h2>My Love Letter 💌</h2>
+<h2>My Royal Love Letter 💌</h2>
 
 <p>
 
-Every moment with you feels magical.<br><br>
+From the moment you came into my life,  
+everything started shining brighter. ✨  
 
-Your smile brightens my darkest days.<br><br>
+Your smile is my sunshine,  
+your voice is my favorite melody.  
 
-If love had a name, it would be yours.<br><br>
+If love were a kingdom,  
+you would be the queen of my heart. 👑  
 
-You are not just someone special…<br>
-you are my happiness, my peace, my world.<br><br>
+Every heartbeat of mine whispers your name.  
 
-Forever yours ❤️
+And no matter where life takes us,  
+my heart will always belong to you.  
+
+Forever yours ❤️  
 
 </p>
 
@@ -217,88 +271,75 @@ Forever yours ❤️
 </div>
 
 <footer>
-© Pandey Ji
+Made with ❤️ by Pandey Ji
 </footer>
 
 <script>
 
 /* typewriter */
 
-const message="Every smile of yours makes my day brighter Khushi ✨";
+const msg="In a world full of stars, you are my moon 🌙";
 let i=0;
 
 function type(){
-if(i<message.length){
-document.getElementById("text").innerHTML+=message.charAt(i);
+if(i<msg.length){
+document.getElementById("type").innerHTML+=msg.charAt(i);
 i++;
 setTimeout(type,60);
 }
 }
-
 type();
 
-/* falling petals */
+/* petals */
 
 for(let i=0;i<25;i++){
-
 let p=document.createElement("div");
 p.className="petal";
 p.innerHTML="🌹";
-
 p.style.left=Math.random()*100+"%";
 p.style.animationDuration=(5+Math.random()*5)+"s";
-
 document.body.appendChild(p);
-
 }
 
-/* floating hearts */
+/* hearts */
 
 for(let i=0;i<20;i++){
-
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="💖";
-
 h.style.left=Math.random()*100+"%";
 h.style.animationDuration=(8+Math.random()*5)+"s";
-
 document.body.appendChild(h);
-
 }
 
-/* open love letter */
+/* open letter */
 
 function openLetter(){
-
 document.getElementById("letter").classList.add("active");
 document.getElementById("music").play();
-
 }
 
 /* close */
 
 function closeLetter(){
-
 document.getElementById("letter").classList.remove("active");
-
 }
 
 /* heart explosion */
 
 document.body.addEventListener("click",function(e){
 
-let heart=document.createElement("div");
-heart.className="explode";
-heart.innerHTML="💖";
+let h=document.createElement("div");
+h.className="boom";
+h.innerHTML="💖";
 
-heart.style.left=e.pageX+"px";
-heart.style.top=e.pageY+"px";
+h.style.left=e.pageX+"px";
+h.style.top=e.pageY+"px";
 
-document.body.appendChild(heart);
+document.body.appendChild(h);
 
 setTimeout(()=>{
-heart.remove();
+h.remove();
 },1000)
 
 });
@@ -307,4 +348,3 @@ heart.remove();
 
 </body>
 </html>
-```
