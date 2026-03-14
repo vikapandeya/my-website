@@ -1,1 +1,338 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Vibes Only</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:white;
+
+/* animated gradient background */
+background:linear-gradient(-45deg,#0f0524,#3b0066,#6a00a8,#ff008c);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* floating sparkles */
+
+.sparkles{
+position:absolute;
+width:200%;
+height:200%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:0.35;
+animation:stars 60s linear infinite;
+}
+
+@keyframes stars{
+from{transform:translateY(0);}
+to{transform:translateY(-1000px);}
+}
+
+/* glass card */
+
+.card{
+position:relative;
+text-align:center;
+padding:40px 60px;
+border-radius:20px;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(12px);
+box-shadow:0 0 40px rgba(255,0,150,0.7);
+max-width:90%;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+/* heading */
+
+h1{
+font-size:clamp(28px,5vw,48px);
+letter-spacing:3px;
+color:#ffd6ff;
+text-shadow:0 0 20px #ff4df0;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #ff4df0;}
+to{text-shadow:0 0 35px #ff4df0;}
+}
+
+/* phrase */
+
+.phrase{
+margin-top:10px;
+font-size:18px;
+opacity:0.9;
+}
+
+/* love lines */
+
+.love{
+margin-top:18px;
+font-size:20px;
+color:#ffb3f7;
+line-height:1.5;
+}
+
+/* main heart */
+
+.big-heart{
+font-size:50px;
+margin-top:20px;
+cursor:pointer;
+animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+25%{transform:scale(1.2);}
+40%{transform:scale(1);}
+60%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
+
+/* toggle button */
+
+.toggle-btn{
+margin-top:20px;
+padding:12px 28px;
+border:none;
+border-radius:30px;
+font-size:16px;
+font-weight:600;
+color:white;
+cursor:pointer;
+
+background:linear-gradient(45deg,#ff008c,#ff4df0,#ff7bd5);
+background-size:200% 200%;
+
+box-shadow:0 0 15px rgba(255,0,150,0.6);
+transition:0.3s;
+animation:btnGlow 4s linear infinite;
+}
+
+.toggle-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 25px rgba(255,0,150,1);
+}
+
+@keyframes btnGlow{
+0%{background-position:0%}
+50%{background-position:100%}
+100%{background-position:0%}
+}
+
+/* hanging hearts */
+
+.hearts-top{
+position:absolute;
+top:0;
+width:100%;
+height:120px;
+pointer-events:none;
+}
+
+.hanger{
+position:absolute;
+top:0;
+animation:swing 4s ease-in-out infinite;
+}
+
+.hanger span{
+display:block;
+margin-top:80px;
+font-size:24px;
+}
+
+@keyframes swing{
+0%{transform:rotate(-7deg);}
+50%{transform:rotate(7deg);}
+100%{transform:rotate(-7deg);}
+}
+
+/* floating hearts */
+
+.floating{
+position:absolute;
+bottom:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.float-heart{
+position:absolute;
+bottom:0;
+font-size:18px;
+animation:rise 10s linear infinite;
+}
+
+@keyframes rise{
+0%{transform:translateY(0);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+/* burst hearts */
+
+.burst{
+position:absolute;
+font-size:18px;
+animation:burstUp 1.6s forwards;
+}
+
+@keyframes burstUp{
+0%{opacity:1;transform:translateY(0) scale(1);}
+100%{opacity:0;transform:translateY(-200px) scale(1.6);}
+}
+
+footer{
+margin-top:15px;
+font-size:13px;
+opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sparkles"></div>
+
+<!-- hanging hearts -->
+<div class="hearts-top">
+<div class="hanger" style="left:10%"><span>💖</span></div>
+<div class="hanger" style="left:30%"><span>💗</span></div>
+<div class="hanger" style="left:50%"><span>💞</span></div>
+<div class="hanger" style="left:70%"><span>💘</span></div>
+<div class="hanger" style="left:90%"><span>💓</span></div>
+</div>
+
+<!-- floating hearts -->
+<div class="floating">
+<div class="float-heart" style="left:15%">💖</div>
+<div class="float-heart" style="left:40%">💗</div>
+<div class="float-heart" style="left:65%">💞</div>
+<div class="float-heart" style="left:80%">💘</div>
+</div>
+
+<div class="card">
+
+<h1>GOOD VIBES ONLY ✨</h1>
+
+<div class="phrase" id="phrase">
+Positive Energy • Royal Feel • Beautiful Moments
+</div>
+
+<p class="love">
+Every smile of yours makes my day brighter Khushi ✨ <br>
+Your happiness is my favorite feeling 💞
+</p>
+
+<div class="big-heart">💖</div>
+
+<button id="toggleHearts" class="toggle-btn">
+💖 Turn Hearts OFF
+</button>
+
+<footer>
+© Pandey Ji
+</footer>
+
+</div>
+
+<script>
+
+/* rotating phrases */
+
+const phrases=[
+"Positive Energy • Royal Feel • Beautiful Moments",
+"Every smile of yours makes my day brighter Khushi ✨",
+"You are my sunshine and my happiness 💞",
+"With you every moment feels magical ✨"
+]
+
+let index=0
+const phraseEl=document.getElementById("phrase")
+
+setInterval(()=>{
+index=(index+1)%phrases.length
+phraseEl.innerText=phrases[index]
+},3500)
+
+/* toggle hearts */
+
+const toggleBtn=document.getElementById("toggleHearts")
+const floating=document.querySelector(".floating")
+const hanging=document.querySelector(".hearts-top")
+
+let heartsOn=true
+
+toggleBtn.addEventListener("click",()=>{
+
+heartsOn=!heartsOn
+
+if(heartsOn){
+floating.style.display="block"
+hanging.style.display="block"
+toggleBtn.innerHTML="💖 Turn Hearts OFF"
+}else{
+floating.style.display="none"
+hanging.style.display="none"
+toggleBtn.innerHTML="🖤 Turn Hearts ON"
+}
+
+})
+
+/* click heart explosion */
+
+const bigHeart=document.querySelector(".big-heart")
+
+bigHeart.addEventListener("click",()=>{
+
+for(let i=0;i<8;i++){
+
+const heart=document.createElement("div")
+heart.innerHTML="💖"
+heart.className="burst"
+
+heart.style.left=Math.random()*100+"%"
+heart.style.top="60%"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),1600)
+
+}
+
+})
+
+</script>
+
+</body>
+</html>
